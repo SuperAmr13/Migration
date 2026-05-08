@@ -8,66 +8,127 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        :root { --main-orange: #f97316; }
         body { font-family: 'Cairo', sans-serif; background-color: #020617; color: white; overflow-x: hidden; }
-        .en { font-family: 'Orbitron', sans-serif; }
-        .hero-bg {
-            background: linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.7)), 
-                        url('https://r.jina.ai/i/6f97316/0'); /* صورة الواجهة الأولى */
+        .en-font { font-family: 'Orbitron', sans-serif; }
+        
+        /* تأثير الخلفية الحربية */
+        .hero-section {
+            background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)), 
+                        url('https://r.jina.ai/i/6f97316/0'); /* رابط صورة الخلفية التي اخترتها */
             background-size: cover; background-position: center;
         }
-        .mil-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(249, 115, 22, 0.3); backdrop-filter: blur(8px); clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); }
-        .glow-orange { box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); }
+
+        /* تصميم البطاقات العسكرية */
+        .mil-card {
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+            transition: 0.3s;
+        }
+        .mil-card:hover { border-color: var(--main-orange); transform: translateY(-5px); }
+        .glow-btn { box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); }
     </style>
 </head>
 <body>
+
     <nav class="flex justify-between items-center p-5 border-b border-orange-500/20 sticky top-0 bg-[#020617]/95 z-50">
-        <div class="text-xl font-900 text-orange-500 uppercase tracking-tighter">Last War <span class="text-white text-[10px] block opacity-50">Migration Hub</span></div>
+        <div class="text-xl font-900 text-orange-500 uppercase tracking-tighter">
+            Last War <span class="text-white text-[10px] block opacity-50">Migration Center</span>
+        </div>
+        
         <div class="flex items-center gap-4">
-            <button onclick="toggleLang()" id="langBtn" class="border border-orange-500 px-3 py-1 rounded text-xs hover:bg-orange-500 transition">English</button>
-            <a href="application.html" class="bg-orange-600 px-4 py-2 rounded font-bold text-sm glow-orange" id="navApply">قدم الآن</a>
+            <button onclick="toggleLanguage()" id="langBtn" class="border border-orange-500 px-3 py-1 rounded text-xs hover:bg-orange-500 transition">English</button>
+            <a href="application.html" class="bg-orange-600 px-5 py-2 rounded font-bold text-sm glow-btn hover:scale-105 transition" id="navApply">قدم الآن</a>
         </div>
     </nav>
 
-    <header class="hero-bg min-h-[85vh] flex items-center justify-center text-center px-6">
+    <header class="hero-section min-h-[90vh] flex items-center justify-center text-center px-6">
         <div data-aos="zoom-out">
-            <h1 id="hTitle" class="text-5xl md:text-8xl font-900 mb-6 drop-shadow-lg">الهجرة الكبرى بدأت</h1>
-            <p id="hDesc" class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">انضم إلى أقوى تحالف في السيرفر. لا تكن مجرد لاعب، كن أسطورة تقود المعركة.</p>
+            <h1 id="heroTitle" class="text-5xl md:text-8xl font-900 mb-6 leading-tight drop-shadow-2xl">الهجرة الكبرى بدأت</h1>
+            <p id="heroDesc" class="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+                مستقبلك العسكري يبدأ هنا. انضم إلى صفوف النخبة في أقوى تحالف بسيرفرنا. القوة، التنظيم، والسيطرة بانتظارك.
+            </p>
             <div class="flex flex-wrap gap-4 justify-center">
-                <a href="application.html" id="hBtn1" class="bg-orange-600 px-8 py-4 rounded-lg text-xl font-black hover:scale-105 transition">ابدأ الطلب الآن</a>
-                <a href="guide.html" id="hBtn2" class="border border-gray-500 px-8 py-4 rounded-lg text-xl font-bold hover:bg-white/10 transition">دليل الهجرة</a>
+                <a href="application.html" id="mainBtn" class="bg-orange-600 px-10 py-4 rounded-lg text-xl font-900 hover:bg-orange-700 transition glow-btn">ابدأ طلب التجنيد</a>
+                <a href="guide.html" id="secBtn" class="border border-gray-600 px-10 py-4 rounded-lg text-xl font-bold hover:bg-white/10 transition">بروتوكول الهجرة</a>
             </div>
         </div>
     </header>
 
-    <section class="py-20 px-6 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-3 gap-8">
+    <section class="py-24 px-6 bg-slate-950">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
             <div class="mil-card p-10 text-center" data-aos="fade-up">
-                <h3 id="s1" class="text-orange-500 font-bold mb-2">قوة السيرفر</h3>
-                <p class="text-5xl font-black">12.6M+</p>
+                <h3 id="s1" class="text-orange-500 font-bold mb-2 uppercase tracking-widest text-sm">قوة السيرفر الإجمالية</h3>
+                <p class="text-5xl font-black en-font text-white">12.6M+</p>
             </div>
             <div class="mil-card p-10 text-center" data-aos="fade-up" data-aos-delay="100">
-                <h3 id="s2" class="text-orange-500 font-bold mb-2">ترتيب الـ VS</h3>
-                <p class="text-5xl font-black">#3</p>
+                <h3 id="s2" class="text-orange-500 font-bold mb-2 uppercase tracking-widest text-sm">ترتيب التحالف عالمياً</h3>
+                <p class="text-5xl font-black en-font text-white">#03</p>
             </div>
             <div class="mil-card p-10 text-center" data-aos="fade-up" data-aos-delay="200">
-                <h3 id="s3" class="text-orange-500 font-bold mb-2">الصناديق اليومية</h3>
-                <p class="text-5xl font-black">500+</p>
+                <h3 id="s3" class="text-orange-500 font-bold mb-2 uppercase tracking-widest text-sm">المكافآت اليومية</h3>
+                <p class="text-5xl font-black en-font text-white">500+</p>
             </div>
         </div>
     </section>
 
+    <footer class="p-10 text-center border-t border-slate-900 text-gray-600 text-sm">
+        <p>© 2026 LAST WAR ALLIANCE | COMMAND CENTER</p>
+        <div class="mt-2 flex justify-center gap-4">
+            <a href="admin.html" class="hover:text-orange-500 transition">دخول القادة</a>
+        </div>
+    </footer>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
-        let lang = 'ar';
-        const t = {
-            ar: { hTitle: "الهجرة الكبرى بدأت", hDesc: "انضم إلى أقوى تحالف في السيرفر. لا تكن مجرد لاعب، كن أسطورة تقود المعركة.", hBtn1: "ابدأ الطلب الآن", hBtn2: "دليل الهجرة", navApply: "قدم الآن", langBtn: "English", s1: "قوة السيرفر", s2: "ترتيب الـ VS", s3: "الصناديق اليومية" },
-            en: { hTitle: "THE GREAT MIGRATION", hDesc: "Join the strongest alliance. Don't just be a player, be a legend leading the war.", hBtn1: "APPLY NOW", hBtn2: "GUIDE", navApply: "APPLY", langBtn: "العربية", s1: "SERVER POWER", s2: "VS RANK", s3: "DAILY CHESTS" }
+        AOS.init({ duration: 1000, once: true });
+
+        let currentLang = 'ar';
+        const content = {
+            ar: {
+                heroTitle: "الهجرة الكبرى بدأت",
+                heroDesc: "مستقبلك العسكري يبدأ هنا. انضم إلى صفوف النخبة في أقوى تحالف بسيرفرنا. القوة، التنظيم، والسيطرة بانتظارك.",
+                mainBtn: "ابدأ طلب التجنيد",
+                secBtn: "بروتوكول الهجرة",
+                navApply: "قدم الآن",
+                langBtn: "English",
+                s1: "قوة السيرفر الإجمالية",
+                s2: "ترتيب التحالف عالمياً",
+                s3: "المكافآت اليومية"
+            },
+            en: {
+                heroTitle: "THE GREAT MIGRATION",
+                heroDesc: "Your military future starts here. Join the elite in our server's strongest alliance. Power, Order, and Dominance await.",
+                mainBtn: "START RECRUITMENT",
+                secBtn: "MIGRATION GUIDE",
+                navApply: "APPLY NOW",
+                langBtn: "العربية",
+                s1: "TOTAL SERVER POWER",
+                s2: "GLOBAL ALLIANCE RANK",
+                s3: "DAILY REWARDS"
+            }
         };
-        function toggleLang() {
-            lang = lang === 'ar' ? 'en' : 'ar';
-            document.getElementById('mainHtml').dir = lang === 'ar' ? 'rtl' : 'ltr';
-            Object.keys(t[lang]).forEach(key => { if(document.getElementById(key)) document.getElementById(key).innerText = t[lang][key]; });
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const html = document.getElementById('mainHtml');
+            html.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            html.lang = currentLang;
+
+            // تحديث النصوص في الصفحة
+            Object.keys(content[currentLang]).forEach(key => {
+                const element = document.getElementById(key);
+                if(element) element.innerText = content[currentLang][key];
+            });
+
+            // تغيير الخط للعناوين الإنجليزية
+            if(currentLang === 'en') {
+                document.getElementById('heroTitle').classList.add('en-font');
+            } else {
+                document.getElementById('heroTitle').classList.remove('en-font');
+            }
         }
     </script>
 </body>
